@@ -23,7 +23,6 @@ float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
 
 double posX, posY;
-double lastX, lastY;
 
 GLuint VAO_POINTS, VBO_POINTS;
 GLuint VAO_CENTER, VBO_CENTER;
@@ -50,10 +49,6 @@ GLFWwindow* System::GLFWInit()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-#ifdef __APPLE__
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
 
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Pista", nullptr, nullptr);
 
@@ -246,9 +241,6 @@ void mouseCallback(GLFWwindow* window, int button, int action, int mods) {
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 		glfwGetCursorPos(window, &posX, &posY);
 		if (!drawTrack) {
-
-			lastX = posX;
-			lastY = posY;
 
 			points.push_back(posX);
 			points.push_back(posY);

@@ -158,8 +158,7 @@ void System::Run(GLFWwindow* window, GLuint VAO, GLuint VAOlight, glm::vec3 cube
 		//coreShader.Use();
 		glBindVertexArray(VAOlight);
 
-		// calculate the model matrix for each object and pass it to shader before drawing
-		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+		
 		model = glm::translate(model, cubePositions[0]);
 		lightShader.setMatrix4fv("model", model);
 

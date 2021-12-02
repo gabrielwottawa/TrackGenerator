@@ -34,7 +34,7 @@ System sys;
 int main() {
 	vector<Mesh*> meshs;
 	meshs.push_back(ObjReader::read("Objects/pista.obj"));		
-	meshs.push_back(ObjReader::read("Objects/carro.obj"));
+	meshs.push_back(ObjReader::read("Objects/car.obj"));
 	
 	GLFWwindow* window = sys.GLFWInit();
 
