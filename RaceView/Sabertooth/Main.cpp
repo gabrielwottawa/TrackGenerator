@@ -34,7 +34,7 @@ System sys;
 int main() {
 	vector<Mesh*> meshs;
 	meshs.push_back(ObjReader::read("Objects/pista.obj"));		
-	//meshs.push_back(ObjReader::read("Objects/bmw.obj"));		
+	meshs.push_back(ObjReader::read("Objects/carro.obj"));
 	
 	GLFWwindow* window = sys.GLFWInit();
 
@@ -91,10 +91,10 @@ int main() {
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// position attribute
+	
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// normal
+	
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
@@ -102,11 +102,10 @@ int main() {
 	glBindVertexArray(VAOlight);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// note that we update the lamp's position attribute's stride to reflect the updated buffer data
+	
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-
-	// world space positions
+	
 	glm::vec3 cubePositions[] = {
 		glm::vec3(5.0f,  0.5f,  0.0f),
 		glm::vec3(3.0f,  0.0f, -15.0f),
@@ -121,15 +120,9 @@ int main() {
 		glm::vec3(10.5f, 0.0f, -20.5f),
 		glm::vec3(-10.5f, 0.0f, 20.5f),
 	};
-
-	glm::vec3 objectsPositions[] = {
-		glm::vec3(0.0f,  0.0f,  0.0f)
-	};
-
-	// run
-	sys.Run(window, VAO1, VAOlight, objectsPositions, cubePositions, meshs, objPoints);
-
-	// finish
+	
+	sys.Run(window, VAO1, VAOlight, cubePositions, meshs, objPoints);
+	
 	sys.Finish(VAO1, VAOlight);
 
 	return 0;

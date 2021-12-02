@@ -97,5 +97,11 @@
     <None Include="core2.vert">
       <Filter>Shaders\Core</Filter>
     </None>
+    <None Include="Shaders\Core\core3.frag">
+      <Filter>Shaders\Core</Filter>
+    </None>
+    <None Include="Shaders\Core\core3.vert">
+      <Filter>Shaders\Core</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -23,7 +23,6 @@
 
 // Headers
 #include "Shader.h"
-#include "AssetManager.h"
 #include "Time.h"
 
 using namespace std;

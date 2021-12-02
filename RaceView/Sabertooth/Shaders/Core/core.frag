@@ -9,6 +9,7 @@ out vec4 color;
 
 uniform sampler2D texture1;
 uniform int tex;
+uniform int text;
 
 uniform vec3 viewPos; 
 uniform vec3 lightColor;
@@ -25,7 +26,6 @@ uniform vec3 ligthSpec;
 void main() {
 	if (tex == 0) {
         vec4 objectColor = texture(texture1, TexCoord);
-
 	    // ambient
         vec3 ambient = lightColor * materialAmbient;
   	
@@ -36,14 +36,10 @@ void main() {
         vec3 diffuse = diff * lightColor * materialDiffuse;
     
         // specular
-        vec3 viewDir = normalize(viewPos - FragPos);
-        //vec3 viewDir = normalize(-FragPos); // the viewer is always at (0,0,0) in view-space, so viewDir is (0,0,0) - Position => -Position
+        vec3 viewDir = normalize(viewPos - FragPos);        
         vec3 reflectDir = reflect(-lightDir, norm);  
-        float spec = pow(max(dot(viewDir, reflectDir), 0.0), materialShininess);
-        //vec3 specular = ligthSpec * (spec * materialSpecular);
-        vec3 specular = spec * lightColor * materialSpecular;
-        //vec3 specular = ligthSpec * lightColor * (spec * materialSpecular);
-        //vec3 specular = ligthSpec * spec * lightColor;  
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), materialShininess);        
+        vec3 specular = spec * lightColor * materialSpecular;        
 
         vec3 result = (ambient + diffuse + specular);
         color = vec4(result, 1.0) * objectColor;
@@ -61,8 +57,7 @@ void main() {
         
         // specular
         float specularStrength = 1.0;
-        vec3 viewDir = normalize(viewPos - FragPos);
-        //vec3 viewDir = normalize(-FragPos); // the viewer is always at (0,0,0) in view-space, so viewDir is (0,0,0) - Position => -Position
+        vec3 viewDir = normalize(viewPos - FragPos);        
         vec3 reflectDir = reflect(-lightDir, norm);
         float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
         vec3 specular = specularStrength * spec * lightColor;

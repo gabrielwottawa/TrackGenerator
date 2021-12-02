@@ -12,14 +12,10 @@
 
 #include <map>
 
-#include "Texture.h"
-
-
 class Shader
 {
 public:
-	GLuint program;
-	std::map<std::string, Texture> textures;
+	GLuint program;	
 	GLint textureQtd;
 
 public:
@@ -130,10 +126,7 @@ public:
 	}
 
 	void Shader::setMatrix4fv(const std::string& name, glm::mat4& matrix);
-	void Shader::setVec3(const std::string& name, glm::vec3& vec3);
-	
-	void UseTexture( std::string textureName );
-	void LoadTexture( char* path, char* textureUniformName, std::string textureName );
+	void Shader::setVec3(const std::string& name, glm::vec3& vec3);		
 };
 
 #endif

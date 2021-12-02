@@ -18,7 +18,6 @@
 
 // Headers
 #include "Shader.h"
-#include "AssetManager.h"
 #include "Time.h"
 #include "System.h"
 
